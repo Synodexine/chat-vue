@@ -1,6 +1,6 @@
 <template>
   <div class="text-field">
-      <input :value="value" @input="$emit('input', $event.target.value)" type="text"/>
+      <input @keydown="$emit('keydown', $event)" :value="value" @input="$emit('input', $event.target.value)" type="text"/>
   </div>
 </template>
 

@@ -45,7 +45,7 @@ export default {
                     this.errors.push("User with this name already extists")
                 }
                 else {
-                    this.$cookie.set('token', response.data, {SameSite: 'None', Secure: true, expires: '14D'})
+                    this.$cookie.set('token', response.data, {SameSite: 'None', expires: '14D'})
                     RestClient.defaults.headers.common.Authorization = response.data
                     this.$router.push('/rooms/')
                 }

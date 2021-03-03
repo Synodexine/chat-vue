@@ -3,7 +3,7 @@ import VueCookie from 'vue-cookie'
 
 
 export let RestClient = axios.create({
-    baseURL: 'http://192.168.20.84:8000/api/v1/',
+    baseURL: 'http://192.168.100.5:8000/api/v1/',
 })
 
 export let postExternalRequest = async (url, payload) => {

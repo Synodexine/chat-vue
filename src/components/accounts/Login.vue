@@ -36,11 +36,12 @@ export default {
         async loginButtonClick(){
             this.errors = []
             let response = await Accounts.login_user(this.username, this.password)
+            this.errors.push("Unknown error on server side. Please, try again later")
             if (response.status == 400){
                 this.errors.push("Provided username or password was wrong")
             }
             else if(response.status == 200){
-                this.$cookie.set('token', response.data, {SameSite: 'None', Secure: true, expires: '14D'})
+                this.$cookie.set('token', response.data, {SameSite: 'None', expires: '14D'})
                 RestClient.defaults.headers.common.Authorization = response.data
                 this.$router.push('/rooms/')
             }
