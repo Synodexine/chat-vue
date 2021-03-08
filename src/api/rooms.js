@@ -1,4 +1,4 @@
-import { RestClient } from './common'
+import { RestClient, postExternalRequest } from './common'
 
 export const Rooms = {
     async list() {
@@ -16,5 +16,14 @@ export const Rooms = {
             }
         })
         return response.data
-    }
+    },
+    async deleteRoom(roomId){
+        return await postExternalRequest('/chat/delete-room/', {"room_id": roomId})
+        .then((response) => {
+            return {
+                data: response.data,
+                status: response.statusCode 
+            }
+        })
+    },
 }
