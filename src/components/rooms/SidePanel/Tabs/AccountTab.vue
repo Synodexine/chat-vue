@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="title">Account</div>
-      <Info>Name: {{ user.info.username }}</Info>
+      <Info>Name: {{ user.info.full_prefix}} {{ user.info.username }}</Info>
       <Info>Status: {{ user.info.permission_level.level_name }}</Info>
       <TabButton value="button" @on-click="logOut">LogOut</TabButton>
   </div>

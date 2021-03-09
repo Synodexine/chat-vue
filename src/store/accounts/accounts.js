@@ -1,6 +1,7 @@
 import { Accounts } from '../../api/accounts'
 import {
-  SET_USER_INFO
+  SET_USER_INFO,
+  SET_USER_PREFIX
 } from './mutation-types.js'
 
 
@@ -20,10 +21,17 @@ const getters = {
 const mutations = {
     [SET_USER_INFO]: (state, payload) => {
       state.user.info = payload;
+    },
+    [SET_USER_PREFIX]: (state, payload) => {
+      state.user.info = payload;
     }
 };
 const actions = {
     GET_USER_INFO: async (context) => {
+      context.commit('SET_USER_INFO', await Accounts.getUserInfo().then(response => {return response.data}))
+    },
+    SET_USER_PREFIX: async (context, newPrefix) => {
+      Accounts.changePrefix(newPrefix);
       context.commit('SET_USER_INFO', await Accounts.getUserInfo().then(response => {return response.data}))
     }
 };

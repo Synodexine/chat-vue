@@ -23,6 +23,9 @@ export const Accounts = {
         return await postExternalRequest('/accounts/verify_token/', {'token': token.split(' ')[1]})
     },
     async getUserInfo() {
-        return getExternalRequest('/accounts/get-user-info/')
+        return await getExternalRequest('/accounts/get-user-info/')
+    },
+    async changePrefix(prefix){
+        return await postExternalRequest('/accounts/change-prefix/', {'prefix': prefix})
     }
 }

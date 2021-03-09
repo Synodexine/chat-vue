@@ -24,6 +24,11 @@ export default {
         TextField,
         CustomButton
     },
+    computed:{
+        user(){
+            return this.$store.getters.user
+        }
+    },
     data() {
         return {
             room_id: this.$route.params.id,
@@ -51,7 +56,7 @@ export default {
 
         this.wsConnection.onmessage = (event) => {
             var receivedMessage = JSON.parse(event.data)
-            this.messages.push({username: receivedMessage.username, data: receivedMessage.message})
+            this.messages.push({username: this.user.info.full_prefix + " " + receivedMessage.username, data: receivedMessage.message})
             
         }
 
